@@ -17,22 +17,35 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        service.fetchTracks().done { response in
-            
-            let presentations = response.results
-            print("Second track: \(presentations[1].trackName)")
-            
-        }.catch { (error) in
-            print("error: \(error.localizedDescription)")
-        }
-    }
-}
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
 
-class GError: Error {
-    
-    let description: String
-    
-    init(description: String) {
-        self.description = description
+        // MARK: Option 1
+        service.fetchTracks()
+        .done { response in
+            
+            let tracks = response.results
+            print("Second track: \(tracks[1].trackName)")
+            
+        }.catch { (error) in //handle error here
+            print("error: \(error.localizedDescription)")
+        }.finally {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        }
+        
+        // MARK: Option 2
+        firstly {
+            
+            service.fetchTracks()
+            
+        }.done { response in
+
+            let tracks = response.results
+            print("Second track: \(tracks[1].trackName)")
+            
+        }.catch { error in //handle error here
+            print("error: \(error.localizedDescription)")
+        }.finally {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        }
     }
 }

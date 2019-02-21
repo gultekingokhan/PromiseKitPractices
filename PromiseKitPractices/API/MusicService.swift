@@ -19,7 +19,7 @@ final class MusicService: MusicServiceProtocol {
         
         return Promise { result in
         
-            let url = URL(string: "hps://itunes.apple.com/search?term=jack+johnson")
+            let url = URL(string: "https://itunes.apple.com/search?term=jack+johnson")
             
             HTTPClient.get(from: url!, params: nil) { (response) in
                 

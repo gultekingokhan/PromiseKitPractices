@@ -116,8 +116,8 @@
 			children = (
 				570EA728221E890200AB9400 /* AppDelegate.swift */,
 				570EA72A221E890200AB9400 /* ViewController.swift */,
-				570EA766221EC31800AB9400 /* API */,
 				570EA75E221E939800AB9400 /* TrackPresentation.swift */,
+				570EA766221EC31800AB9400 /* API */,
 				570EA72C221E890200AB9400 /* Main.storyboard */,
 				570EA72F221E890300AB9400 /* Assets.xcassets */,
 				570EA731221E890300AB9400 /* LaunchScreen.storyboard */,
